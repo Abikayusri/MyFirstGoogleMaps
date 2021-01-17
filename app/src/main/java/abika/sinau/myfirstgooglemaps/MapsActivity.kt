@@ -7,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -36,8 +37,33 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val alAzharBekasi = LatLng(-6.222978,107.003199)
+        val gubugMakanMangEngking = LatLng(-6.222978,107.003199)
+//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        // ganti warna marker
+        mMap.addMarker(MarkerOptions()
+            .position(alAzharBekasi)
+            .title("Marker in Sydney")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)))
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(alAzharBekasi))
+
+        // add 2 marker + snippet
+        mMap.addMarker(MarkerOptions()
+            .position(gubugMakanMangEngking)
+            .title("Marker in Sydney")
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bike_black))
+            .snippet("Warung Makan Mang Engking"))
+
+        // setting zoom
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(alAzharBekasi, 15f))
+
+        // nambah setting zoom-in dan zoom-out
+        mMap.uiSettings.isZoomControlsEnabled = true
+
+        // nambah setting kompas
+        mMap.uiSettings.isCompassEnabled = true
+
+
     }
 }
