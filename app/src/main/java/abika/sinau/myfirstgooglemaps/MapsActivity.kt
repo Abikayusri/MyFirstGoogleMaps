@@ -10,6 +10,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -58,12 +59,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // setting zoom
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(alAzharBekasi, 15f))
 
-        // nambah setting zoom-in dan zoom-out
+        // add setting zoom-in and zoom-out
         mMap.uiSettings.isZoomControlsEnabled = true
 
-        // nambah setting kompas
+        // add setting kompas
         mMap.uiSettings.isCompassEnabled = true
 
+        // add mapType
+        btnHybrid.setOnClickListener {
+            mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+        }
 
+        btnSatelite.setOnClickListener {
+            mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+        }
+
+        btnTerrain.setOnClickListener {
+            mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+        }
+
+        btnNormal.setOnClickListener {
+            mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+        }
     }
 }
