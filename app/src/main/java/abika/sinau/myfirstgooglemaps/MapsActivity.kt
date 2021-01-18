@@ -38,13 +38,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val alAzharBekasi = LatLng(-6.222978,107.003199)
-        val gubugMakanMangEngking = LatLng(-6.222978,107.003199)
+        val alAzharBekasi = LatLng(-6.2230992,107.0013453)
+        val gubugMakanMangEngking = LatLng(-6.2286863,107.0024923)
 //        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         // ganti warna marker
         mMap.addMarker(MarkerOptions()
             .position(alAzharBekasi)
-            .title("Marker in Sydney")
+            .title("Al Azhar Bekasi")
             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)))
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(alAzharBekasi))
@@ -52,8 +52,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // add 2 marker + snippet
         mMap.addMarker(MarkerOptions()
             .position(gubugMakanMangEngking)
-            .title("Marker in Sydney")
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bike_black))
+            .title("Gubug Mang Engking")
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_rider_black))
             .snippet("Warung Makan Mang Engking"))
 
         // setting zoom
