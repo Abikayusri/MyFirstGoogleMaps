@@ -11,6 +11,21 @@
         android:layout_height="match_parent"
         tools:context=".MapsActivity" />
 
+    <TextView
+        android:id="@+id/tvCoordinate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvNameLocation"
+        android:layout_below="@id/tvCoordinate"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="50dp"
+        android:visibility="gone"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

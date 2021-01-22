@@ -1,7 +1,9 @@
 package abika.sinau.myfirstgooglemaps
 
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -81,5 +83,36 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         btnNormal.setOnClickListener {
             mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         }
+
+        mMap.setOnMapClickListener {
+            val lat = it.latitude
+            val lon = it.longitude
+
+            mMap.clear()
+
+            val namaLocation = convertCoordinat(lat, lon)
+
+            tvCoordinate.apply {
+                visibility = View.VISIBLE
+                text = "$lat - $lon"
+            }
+
+            tvNameLocation.apply {
+                visibility = View.VISIBLE
+                text = namaLocation
+            }
+
+            mMap.addMarker(MarkerOptions().position(LatLng(lat, lon)).title("Daerah baru"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(lat, lon)))
+        }
+    }
+
+    fun convertCoordinat(lat: Double, lon: Double): String {
+
+        val geocoder = Geocoder(this)
+        val dataLocation = geocoder.getFromLocation(lat, lon, 1)
+        val nameLocation = dataLocation[0].getAddressLine(0)
+
+        return nameLocation
     }
 }
